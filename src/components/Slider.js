@@ -12,7 +12,11 @@ export const Slider = () => {
 					<ImageContainer>
 						<Image src='https://www.designfreelogoonline.com/wp-content/uploads/2020/07/00381-shopping-01.png' />
 					</ImageContainer>
-					<InfoContainer></InfoContainer>
+					<InfoContainer>
+						<Title>SEASONAL SALE</Title>
+						<Description>DISCOUNTS UP TO 50% ON SELECTED ITEMS</Description>
+						<Button>BUY</Button>
+					</InfoContainer>
 				</Slide>
 			</Wrapper>
 			<Arrow direction='right'>
@@ -27,7 +31,7 @@ const Container = styled.div`
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	background-color: coral;
+
 	position: relative;
 `;
 
@@ -68,6 +72,9 @@ const Slide = styled.div`
 	height: 100vh;
 `;
 const ImageContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 100%;
 	flex: 1;
 `;
@@ -79,4 +86,20 @@ const InfoContainer = styled.div`
 const Image = styled.img`
 	height: 80%;
 	max-height: 600px;
+`;
+
+const Title = styled.h1`
+	font-size: 4rem;
+`;
+const Description = styled.p`
+	margin: 3rem 0;
+	font-size: 1.2rem;
+	font-weight: 500;
+	letter-spacing: 2px;
+`;
+const Button = styled.button`
+	padding: 10px;
+	font-size: 1.2rem;
+	background-color: transparent;
+	cursor: pointer;
 `;
