@@ -1,25 +1,43 @@
-import { ChevronLeft, ChevronRight } from '@material-ui/icons';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { ChevronLeft, ChevronRight } from '@material-ui/icons';
+import { sliderItems } from '../slides';
 
 export const Slider = () => {
+	const [slideIndex, setSlideIndex] = useState(0);
+
+	const handleClick = (direction) => {
+		if (direction === 'left') {
+			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+			console.log(slideIndex);
+		}
+		if (direction === 'right') {
+			setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+			console.log(slideIndex);
+		}
+	};
+
+	const slides = sliderItems.map((item) => (
+		<Slide bg={item.bg} key={item.id}>
+			<ImageContainer>
+				<Image src={item.img} />
+			</ImageContainer>
+			<InfoContainer>
+				<Title>{item.title}</Title>
+				<Description>{item.description}</Description>
+				<Button>BUY IT!</Button>
+			</InfoContainer>
+		</Slide>
+	));
+
+	// RENDER PORTION
 	return (
 		<Container>
-			<Arrow direction='left'>
+			<Arrow direction='left' onClick={() => handleClick('left')}>
 				<ChevronLeft />
 			</Arrow>
-			<Wrapper>
-				<Slide>
-					<ImageContainer>
-						<Image src='https://www.designfreelogoonline.com/wp-content/uploads/2020/07/00381-shopping-01.png' />
-					</ImageContainer>
-					<InfoContainer>
-						<Title>SEASONAL SALE</Title>
-						<Description>DISCOUNTS UP TO 50% ON SELECTED ITEMS</Description>
-						<Button>BUY</Button>
-					</InfoContainer>
-				</Slide>
-			</Wrapper>
-			<Arrow direction='right'>
+			<Wrapper slideIndex={slideIndex}>{slides}</Wrapper>
+			<Arrow direction='right' onClick={() => handleClick('right')}>
 				<ChevronRight />
 			</Arrow>
 		</Container>
@@ -31,14 +49,14 @@ const Container = styled.div`
 	height: 100vh;
 	display: flex;
 	align-items: center;
-
+	overflow: hidden;
 	position: relative;
 `;
 
 const Arrow = styled.div`
 	& {
-		width: 50px;
-		height: 50px;
+		width: 4rem;
+		height: 4rem;
 		background-color: #fff7f7;
 		border-radius: 50%;
 		display: flex;
@@ -51,8 +69,9 @@ const Arrow = styled.div`
 		right: ${(props) => props.direction === 'right' && '10px'};
 		margin: auto;
 		cursor: pointer;
-		opacity: 0.5;
+		opacity: 0.75;
 		transition: opacity 0.25s linear;
+		z-index: 2;
 	}
 
 	&:hover {
@@ -62,6 +81,9 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
 	height: 100%;
+	display: flex;
+	transform: translateX(${(props) => props.slideIndex * -100}vw);
+	transition: transform 1s ease;
 `;
 
 const Slide = styled.div`
@@ -70,6 +92,7 @@ const Slide = styled.div`
 	justify-content: center;
 	width: 100vw;
 	height: 100vh;
+	background-color: #${(props) => props.bg};
 `;
 const ImageContainer = styled.div`
 	display: flex;
