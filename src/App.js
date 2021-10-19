@@ -1,6 +1,6 @@
-import Home from './components/Home';
+import { Home } from './components/Home';
 
-const App = () => {
+export const App = () => {
 	return <Home />;
 };
 
