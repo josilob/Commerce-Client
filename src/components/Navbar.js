@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Search } from '@material-ui/icons';
+import { Search, ShoppingCartOutlined } from '@material-ui/icons';
+import { Badge } from '@material-ui/core';
 
 export const Navbar = () => {
 	return (
@@ -9,13 +10,21 @@ export const Navbar = () => {
 				<First>
 					<Language>EN</Language>
 					<SearchContainer>
-						<Input /> <Search />
+						<Input /> <Search style={{ color: 'gray', fontSize: '1rem' }} />
 					</SearchContainer>
 				</First>
 				<Middle>
 					<Logo>Marketplace.</Logo>
 				</Middle>
-				<Last>Right</Last>
+				<Last>
+					<MenuItem>REGISTER</MenuItem>
+					<MenuItem>SIGN IN</MenuItem>
+					<MenuItem>
+						<Badge badgeContent={4} color='primary'>
+							<ShoppingCartOutlined />
+						</Badge>
+					</MenuItem>
+				</Last>
 			</Wrapper>
 		</Container>
 	);
@@ -43,6 +52,9 @@ const Middle = styled.div`
 `;
 const Last = styled.div`
 	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 `;
 
 const Logo = styled.h1`
@@ -64,4 +76,10 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
 	border: none;
+`;
+
+const MenuItem = styled.div`
+	font-size: 0.9rem;
+	cursor: pointer;
+	margin-left: 1.75rem;
 `;
