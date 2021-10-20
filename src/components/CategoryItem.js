@@ -37,6 +37,15 @@ const Info = styled.div`
 	justify-content: center;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+	color: #fff;
+	margin-bottom: 20px;
+`;
 
-const Button = styled.button``;
+const Button = styled.button`
+	border: none;
+	padding: 10px;
+	background-color: #fff;
+	color: gray;
+	cursor: pointer;
+`;

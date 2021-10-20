@@ -1,6 +1,7 @@
 import Announcement from './Announcement';
 import { Categories } from './Categories';
 import { Navbar } from './Navbar';
+import { Products } from './Products';
 import { Slider } from './Slider';
 
 export const Home = () => {
@@ -10,6 +11,7 @@ export const Home = () => {
 			<Navbar />
 			<Slider />
 			<Categories />
+			<Products />
 		</div>
 	);
 };
