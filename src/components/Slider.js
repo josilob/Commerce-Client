@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { ChevronLeft, ChevronRight } from '@material-ui/icons';
-import { sliderItems } from '../slides';
+import { sliderItems } from '../data';
 
 export const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
@@ -70,7 +70,7 @@ const Arrow = styled.div`
 		margin: auto;
 		cursor: pointer;
 		opacity: 0.75;
-		transition: opacity 0.25s linear;
+		transition: opacity 1.5s ease;
 		z-index: 2;
 	}
 
