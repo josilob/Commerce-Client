@@ -16,9 +16,44 @@ export const Newsletter = () => {
 	);
 };
 
-const Container = styled.div``;
-const Title = styled.h1``;
-const Description = styled.p``;
-const InputContainer = styled.div``;
-const Input = styled.input``;
-const Button = styled.button``;
+const Container = styled.div`
+	height: 60vh;
+	background-color: #fcf5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+`;
+
+const Title = styled.h1`
+	font-size: 4.5rem;
+	margin-bottom: 1rem;
+`;
+
+const Description = styled.p`
+	font-size: 1.75rem;
+	font-weight: 300;
+	margin-bottom: 20px;
+`;
+
+const InputContainer = styled.div`
+	width: 50%;
+	height: 40px;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid lightgray;
+`;
+
+const Input = styled.input`
+	border: none;
+	flex: 8;
+	padding-left: 1.2rem;
+`;
+
+const Button = styled.button`
+	flex: 1;
+	border: none;
+	background-color: teal;
+	color: #fff;
+`;
