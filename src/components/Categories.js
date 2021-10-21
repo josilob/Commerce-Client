@@ -3,7 +3,9 @@ import { categories } from '../data';
 import { CategoryItem } from './CategoryItem';
 
 export const Categories = () => {
-	const items = categories.map((item) => <CategoryItem item={item} />);
+	const items = categories.map((item) => (
+		<CategoryItem item={item} key={item.id} />
+	));
 
 	return <Container>{items}</Container>;
 };
