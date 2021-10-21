@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
 function Announcement() {
-	return <Container>Great deals and free shipping on orders over $50</Container>;
+	return (
+		<Container>
+			Free Shipping and 30-Day free returns. &nbsp;
+			<Underline>SAVE UP TO 50%</Underline>
+		</Container>
+	);
 }
 
 export default Announcement;
@@ -15,4 +20,9 @@ const Container = styled.div`
 	justify-content: center;
 	font-size: 0.95rem;
 	font-weight: 500;
+`;
+
+const Underline = styled.p`
+	text-decoration: underline;
+	cursor: pointer;
 `;

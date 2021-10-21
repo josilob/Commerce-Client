@@ -1,4 +1,12 @@
-import { Facebook, Instagram, Pinterest, Twitter } from '@material-ui/icons';
+import {
+	Facebook,
+	Instagram,
+	MailOutline,
+	Phone,
+	Pinterest,
+	Room,
+	Twitter
+} from '@material-ui/icons';
 import styled from 'styled-components';
 
 export const Footer = () => {
@@ -25,14 +33,44 @@ export const Footer = () => {
 					</SocialIcon>
 				</Socials>
 			</Left>
-			<Middle></Middle>
-			<Right></Right>
+			<Middle>
+				<Title>Useful Links</Title>
+				<List>
+					<ListItem>Cart</ListItem>
+					<ListItem>Home</ListItem>
+					<ListItem>Clothing</ListItem>
+					<ListItem>Wishlist</ListItem>
+					<ListItem>Shoes</ListItem>
+					<ListItem>My Account</ListItem>
+					<ListItem>Gear</ListItem>
+					<ListItem>Terms</ListItem>
+					<ListItem>Accessories</ListItem>
+					<ListItem>Order Tracking</ListItem>
+				</List>
+			</Middle>
+			<Right>
+				<Title>Contact</Title>
+				<ContactItem>
+					<Room style={{ marginRight: '10px' }} />
+					523 Prairie Ave. Lake Worth, FL 33460{' '}
+				</ContactItem>
+				<ContactItem>
+					<Phone style={{ marginRight: '10px' }} />
+					+1 (987) 123 4567
+				</ContactItem>
+				<ContactItem>
+					<MailOutline style={{ marginRight: '10px' }} />
+					contact@marketplace.com
+				</ContactItem>
+				<Payment src='https://i.ibb.co/Qfvn4z6/payment.png' />
+			</Right>
 		</Container>
 	);
 };
 
 const Container = styled.div`
 	flex: 1;
+	display: flex;
 `;
 
 const Left = styled.div`
@@ -48,10 +86,29 @@ const Description = styled.p`
 
 const Middle = styled.div`
 	flex: 1;
+	padding: 20px;
+`;
+
+const Title = styled.h3`
+	margin-bottom: 30px;
+`;
+
+const List = styled.ul`
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+`;
+
+const ListItem = styled.li`
+	width: 50%;
+	margin-bottom: 0.5rem;
 `;
 
 const Right = styled.div`
 	flex: 1;
+	padding: 20px;
 `;
 
 const Logo = styled.h1``;
@@ -69,4 +126,14 @@ const SocialIcon = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: 1.5rem;
+`;
+
+const ContactItem = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+const Payment = styled.img`
+	width: 60%;
 `;
