@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { ChevronLeft, ChevronRight } from '@material-ui/icons';
-import { sliderItems } from '../data';
+import { sliderItems } from '../../data';
 
 export const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
