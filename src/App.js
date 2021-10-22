@@ -4,8 +4,12 @@ import { ProductList } from './components/Routes/ProductList';
 import { Register } from './components/Routes/Register';
 
 export const App = () => {
-	// return <Home />;
-	// return <ProductList />;
-	return <Product />;
-	// return <Register />;
+	return (
+		<>
+			{/* <Home />
+			<ProductList />
+			<Product /> */}
+			<Register />
+		</>
+	);
 };
