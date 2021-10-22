@@ -1,11 +1,11 @@
-import { Home } from './components/Home/Home';
-import { Product } from './components/Product/Product';
-import { ProductList } from './components/Products/ProductList';
+import { Home } from './components/Routes/Home';
+import { Product } from './components/Routes/Product';
+import { ProductList } from './components/Routes/ProductList';
+import { Register } from './components/Routes/Register';
 
 export const App = () => {
 	// return <Home />;
 	// return <ProductList />;
 	return <Product />;
+	// return <Register />;
 };
-
-export default App;

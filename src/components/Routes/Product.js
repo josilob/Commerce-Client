@@ -1,11 +1,13 @@
 import { Add, Remove } from '@material-ui/icons';
+import { useState } from 'react';
 import styled from 'styled-components';
-import Announcement from '../Home/Announcement';
-import { Footer } from '../Home/Footer';
-import { Navbar } from '../Home/Navbar';
-import { Newsletter } from '../Home/Newsletter';
+import { Announcement } from '../Announcement';
+import { Footer } from '../Footer';
+import { Navbar } from '../Navbar';
+import { Newsletter } from '../Newsletter';
 
 export const Product = () => {
+	const [styles, setStyles] = useState({ cursor: 'initial' });
 	return (
 		<Container>
 			<Announcement />
@@ -46,9 +48,17 @@ export const Product = () => {
 					</FilterContainer>
 					<AddContainer>
 						<AmountContainer>
-							<Remove />
+							<Remove
+								onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+								onMouseLeave={() => setStyles({ cursor: 'initial' })}
+								style={styles}
+							/>
 							<Amount>1</Amount>
-							<Add />
+							<Add
+								onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+								onMouseLeave={() => setStyles({ cursor: 'initial' })}
+								style={styles}
+							/>
 						</AmountContainer>
 						<Button>ADD TO CART</Button>
 					</AddContainer>

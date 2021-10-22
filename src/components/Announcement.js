@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
-function Announcement() {
+export const Announcement = () => {
 	return (
 		<Container>
 			Free Shipping and 30-Day free returns. &nbsp;
 			<Underline>SAVE UP TO 50%</Underline>
 		</Container>
 	);
-}
-
-export default Announcement;
+};
 
 const Container = styled.div`
 	height: 30px;

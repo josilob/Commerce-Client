@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import Announcement from '../Home/Announcement';
-import { Footer } from '../Home/Footer';
-import { Navbar } from '../Home/Navbar';
-import { Newsletter } from '../Home/Newsletter';
-import { Products } from '../Home/Products';
+import { Announcement } from '../Announcement';
+import { Footer } from '../Footer';
+import { Navbar } from '../Navbar';
+import { Newsletter } from '../Newsletter';
+import { Products } from '../Products';
 
 export const ProductList = () => {
 	return (
