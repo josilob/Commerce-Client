@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../Responsive';
 
 export const Announcement = () => {
 	return (
@@ -18,6 +19,8 @@ const Container = styled.div`
 	justify-content: center;
 	font-size: 0.95rem;
 	font-weight: 500;
+
+	${mobile({ fontSize: '.75rem' })}
 `;
 
 const Underline = styled.p`

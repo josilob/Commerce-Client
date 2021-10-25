@@ -8,12 +8,11 @@ import { Cart } from './components/Routes/Cart';
 export const App = () => {
 	return (
 		<>
-			{/* <Home />
-			<ProductList />
-			<Product /> */}
-			{/* <Register /> */}
-			{/* <Login /> */}
-			<Cart />
+			{/* <Home />; */}
+			{/* <ProductList />; */}
+			{/* <Product />; */}
+			<Register />;{/* <Login /> ; */}
+			{/* <Cart /> */}
 		</>
 	);
 };

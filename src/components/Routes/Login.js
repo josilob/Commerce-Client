@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../../Responsive';
 
 export const Login = () => {
 	return (
@@ -36,6 +37,8 @@ const Wrapper = styled.div`
 	padding: 20px;
 	background-color: #fff;
 	border: 2px solid teal;
+
+	${mobile({ width: '75%' })}
 `;
 
 const Title = styled.h1`
