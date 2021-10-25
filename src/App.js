@@ -11,8 +11,9 @@ export const App = () => {
 			{/* <Home />; */}
 			{/* <ProductList />; */}
 			{/* <Product />; */}
-			<Register />;{/* <Login /> ; */}
-			{/* <Cart /> */}
+			{/* <Register />; */}
+			{/* <Login /> ; */}
+			<Cart />
 		</>
 	);
 };

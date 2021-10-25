@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
@@ -66,17 +67,23 @@ const Title = styled.h1`
 
 const Filter = styled.div`
 	margin: 20px;
+
+	${mobile({ margin: '0 20px', display: 'flex', flexDirection: 'column' })}
 `;
 
 const FilterText = styled.span`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-right: 20px;
+
+	${mobile({ marginRight: '0px' })}
 `;
 
 const Select = styled.select`
 	padding: 6px;
 	margin-right: 20px;
+
+	${mobile({ margin: '10px 0px' })}
 `;
 
 const Option = styled.option``;
