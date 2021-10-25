@@ -1,4 +1,5 @@
 import { Add, Remove } from '@material-ui/icons';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
@@ -6,6 +7,7 @@ import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
 
 export const Cart = () => {
+	const [styles, setStyles] = useState({});
 	return (
 		<Container>
 			<Announcement />
@@ -42,9 +44,17 @@ export const Cart = () => {
 							</ProductDetails>
 							<PriceDetails>
 								<ProductAmount>
-									<Add />
+									<Add
+										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+										onMouseLeave={() => setStyles({ cursor: 'initial' })}
+										style={styles}
+									/>
 									<Amount>2</Amount>
-									<Remove />
+									<Remove
+										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+										onMouseLeave={() => setStyles({ cursor: 'initial' })}
+										style={styles}
+									/>
 								</ProductAmount>
 								<ProductPrice>$ 75</ProductPrice>
 							</PriceDetails>
@@ -68,9 +78,17 @@ export const Cart = () => {
 							</ProductDetails>
 							<PriceDetails>
 								<ProductAmount>
-									<Add />
+									<Add
+										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+										onMouseLeave={() => setStyles({ cursor: 'initial' })}
+										style={styles}
+									/>
 									<Amount>1</Amount>
-									<Remove />
+									<Remove
+										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+										onMouseLeave={() => setStyles({ cursor: 'initial' })}
+										style={styles}
+									/>
 								</ProductAmount>
 								<ProductPrice>$45</ProductPrice>
 							</PriceDetails>
@@ -183,6 +201,10 @@ const Button = styled.button`
 	background-color: #000;
 	color: #fff;
 	font-weight: 600;
+
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const Hr = styled.hr`
