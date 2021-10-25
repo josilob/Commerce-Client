@@ -46,7 +46,7 @@ export const Cart = () => {
 									<Amount>2</Amount>
 									<Remove />
 								</ProductAmount>
-								<ProductPrice>$75</ProductPrice>
+								<ProductPrice>$ 75</ProductPrice>
 							</PriceDetails>
 						</Product>
 						<Hr />
@@ -80,19 +80,19 @@ export const Cart = () => {
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
 						<SummaryItem>
 							<SummaryItemText>Subtotal</SummaryItemText>
-							<SummaryItemPrice>$ 80</SummaryItemPrice>
+							<SummaryItemPrice>$ 80.00</SummaryItemPrice>
 						</SummaryItem>
 						<SummaryItem>
 							<SummaryItemText>Estimated Shipping</SummaryItemText>
-							<SummaryItemPrice>$ 10</SummaryItemPrice>
+							<SummaryItemPrice>$ 10.00</SummaryItemPrice>
 						</SummaryItem>
 						<SummaryItem>
 							<SummaryItemText>Shipping Discount</SummaryItemText>
-							<SummaryItemPrice>$ -10</SummaryItemPrice>
+							<SummaryItemPrice>$ -10.00</SummaryItemPrice>
 						</SummaryItem>
 						<SummaryItem type='total'>
 							<SummaryItemText>Total </SummaryItemText>
-							<SummaryItemPrice>$ 80</SummaryItemPrice>
+							<SummaryItemPrice>$ 80.00</SummaryItemPrice>
 						</SummaryItem>
 						<Button>CHECKOUT NOW</Button>
 					</Summary>
