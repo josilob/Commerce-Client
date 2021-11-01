@@ -10,7 +10,6 @@ export const Product = ({ item }) => {
 		<Container>
 			<Circle />
 			<Image src={item.image} />
-			{/* <Image src={item.img} /> */}
 			<Info>
 				<Icon>
 					<ShoppingCartOutlined />

@@ -10,7 +10,7 @@ import { Products } from '../Products';
 
 export const ProductList = () => {
 	const location = useLocation();
-	const category = location.pathname.split`/`[2] || null;
+	const category = location.pathname.split('/')[2];
 	const [filters, setFilters] = useState({});
 	const [sort, setSort] = useState('newest');
 	const handleFilters = (e) => {
@@ -33,15 +33,16 @@ export const ProductList = () => {
 						<Option>Red</Option>
 						<Option>Blue</Option>
 						<Option>Orange</Option>
+						<Option>Pink</Option>
 						<Option>Purple</Option>
 						<Option>Yellow</Option>
 					</Select>
 					<Select name='size' defaultValue='Size' onChange={handleFilters}>
 						<Option disabled>Size</Option>
-						<Option>Small</Option>
-						<Option>Medium</Option>
-						<Option>Large</Option>
-						<Option>Extra Large</Option>
+						<Option>S</Option>
+						<Option>M</Option>
+						<Option>L</Option>
+						<Option>XL</Option>
 					</Select>
 				</Filter>
 				<Filter>
