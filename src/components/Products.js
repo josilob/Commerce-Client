@@ -1,15 +1,49 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import { popularProducts } from '../data';
+// import { popularProducts } from '../data';
 import { Product } from './Product';
 
 export const Products = ({ category, filters, sort }) => {
-	console.log(category, filters, sort);
+	const [products, setProducts] = useState([]);
+	const [filteredProducts, setFilteredProducts] = useState([]);
 
-	const products = popularProducts.map((product) => (
-		<Product item={product} key={product.id} />
+	useEffect(() => {
+		const getProducts = async () => {
+			try {
+				const response = await axios.get(
+					category
+						? `https://marketplace-srv.vercel.app/products?category=${category}`
+						: 'https://marketplace-srv.vercel.app/products'
+				);
+				setProducts(response.data);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		getProducts();
+	}, [category]);
+
+	useEffect(() => {
+		category &&
+			setFilteredProducts(
+				products.filter((item) =>
+					Object.entries(filters).every(([key, value]) => item[key].includes(value))
+				)
+			);
+	}, [products, category, filters]);
+
+	console.log(filteredProducts);
+
+	const mappedProducts = filteredProducts.map((product) => (
+		<Product item={product} key={product._id} />
 	));
 
-	return <Container>{products}</Container>;
+	// const mappedProducts = popularProducts.map((product) => (
+	// 	<Product item={product} key={product.id} />
+	// ));
+
+	return <Container>{mappedProducts}</Container>;
 };
 
 const Container = styled.div`
