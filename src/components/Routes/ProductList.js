@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
@@ -7,6 +9,14 @@ import { Newsletter } from '../Newsletter';
 import { Products } from '../Products';
 
 export const ProductList = () => {
+	const location = useLocation();
+	const category = location.pathname.split`/`[2];
+	const [filters, setFilters] = useState({});
+	const [sort, setSort] = useState('newest');
+	const handleFilters = (e) => {
+		setFilters({ ...filters, [e.target.name]: e.target.value });
+	};
+
 	return (
 		<Container>
 			<Announcement />
@@ -15,10 +25,8 @@ export const ProductList = () => {
 			<FilterContainer>
 				<Filter>
 					<FilterText>Filter Products</FilterText>
-					<Select>
-						<Option disabled selected>
-							Color
-						</Option>
+					<Select name='color' defaultValue='Color' onChange={handleFilters}>
+						<Option disabled>Color</Option>
 						<Option>Black</Option>
 						<Option>White</Option>
 						<Option>Gray</Option>
@@ -28,10 +36,8 @@ export const ProductList = () => {
 						<Option>Purple</Option>
 						<Option>Yellow</Option>
 					</Select>
-					<Select>
-						<Option disabled selected>
-							Size
-						</Option>
+					<Select name='size' defaultValue='Size' onChange={handleFilters}>
+						<Option disabled>Size</Option>
 						<Option>Small</Option>
 						<Option>Medium</Option>
 						<Option>Large</Option>
@@ -40,14 +46,18 @@ export const ProductList = () => {
 				</Filter>
 				<Filter>
 					<FilterText>Sort Products</FilterText>
-					<Select>
-						<Option selected>Newest</Option>
-						<Option>Price(asc)</Option>
-						<Option>Price(desc)</Option>
+					<Select
+						defaultValue='Newest'
+						onChange={(e) => {
+							setSort(e.target.value);
+						}}>
+						<Option value='newest'>Newest</Option>
+						<Option value='asc'>Price(asc)</Option>
+						<Option value='desc'>Price(desc)</Option>
 					</Select>
 				</Filter>
 			</FilterContainer>
-			<Products />
+			<Products category={category} sort={sort} filters={filters} />
 			<Newsletter />
 			<Footer />
 		</Container>
