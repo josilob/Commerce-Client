@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { popularProducts } from '../data';
+// import { popularProducts } from '../data';
 import { Product } from './Product';
 
 export const Products = ({ category, filters, sort }) => {
@@ -10,12 +10,9 @@ export const Products = ({ category, filters, sort }) => {
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const link = category
-				? `http://localhost:27017/products?category=${category}`
-				: 'http://localhost:27017/products';
+			const link = `http://localhost:27017/products?category=${category}`;
 			try {
 				const response = await axios.get(link);
-				console.log(response || 'Nothing');
 				setProducts(response.data);
 			} catch (err) {
 				console.log(err);
@@ -32,6 +29,30 @@ export const Products = ({ category, filters, sort }) => {
 				)
 			);
 	}, [products, category, filters]);
+
+	useEffect(() => {
+		switch (sort) {
+			case 'asc':
+				setFilteredProducts((filteredProducts) =>
+					[...filteredProducts].sort((a, b) => a.price - b.price)
+				);
+				break;
+			case 'desc':
+				setFilteredProducts((filteredProducts) =>
+					[...filteredProducts].sort((a, b) => b.price - a.price)
+				);
+				break;
+			case 'newest':
+				setFilteredProducts((prev) =>
+					[...prev].sort((a, b) => a.createdAt - b.createdAt)
+				);
+				break;
+			default:
+				setFilteredProducts((prev) =>
+					[...prev].sort((a, b) => a.createdAt - b.createdAt)
+				);
+		}
+	}, [sort]);
 
 	console.log(filteredProducts);
 

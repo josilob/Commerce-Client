@@ -13,6 +13,7 @@ export const ProductList = () => {
 	const category = location.pathname.split('/')[2];
 	const [filters, setFilters] = useState({});
 	const [sort, setSort] = useState('newest');
+
 	const handleFilters = (e) => {
 		setFilters({ ...filters, [e.target.name]: e.target.value });
 	};
@@ -47,11 +48,7 @@ export const ProductList = () => {
 				</Filter>
 				<Filter>
 					<FilterText>Sort Products</FilterText>
-					<Select
-						defaultValue='Newest'
-						onChange={(e) => {
-							setSort(e.target.value);
-						}}>
+					<Select onChange={(e) => setSort(e.target.value)}>
 						<Option value='newest'>Newest</Option>
 						<Option value='asc'>Price(asc)</Option>
 						<Option value='desc'>Price(desc)</Option>
