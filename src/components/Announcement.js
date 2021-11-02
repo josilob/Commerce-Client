@@ -12,7 +12,7 @@ export const Announcement = () => {
 
 const Container = styled.div`
 	height: 30px;
-	background-color: teal;
+	background-color: #26aae2;
 	color: #fff;
 	display: flex;
 	align-items: center;

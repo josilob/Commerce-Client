@@ -1,7 +1,7 @@
 export const sliderItems = [
 	{
 		id: 1,
-		img: 'https://www.designfreelogoonline.com/wp-content/uploads/2020/07/00381-shopping-01.png',
+		img: 'https://i.pinimg.com/originals/49/eb/ec/49ebec42164a4aedd4971469c8fa1d18.png',
 		title: 'SITEWIDE SALE',
 		description: 'DISCOUNTS UP TO 50% ON SELECTED ITEMS',
 		bg: 'f5fafd'

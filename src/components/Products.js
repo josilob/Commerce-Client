@@ -10,7 +10,9 @@ export const Products = ({ category, filters, sort }) => {
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const link = `http://localhost:27017/products?category=${category}`;
+			const link = category
+				? `http://localhost:27017/products?category=${category}`
+				: 'http://localhost:27017/products';
 			try {
 				const response = await axios.get(link);
 				setProducts(response.data);
@@ -44,12 +46,12 @@ export const Products = ({ category, filters, sort }) => {
 				break;
 			case 'newest':
 				setFilteredProducts((prev) =>
-					[...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+					[...prev].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
 				);
 				break;
 			case 'oldest':
 				setFilteredProducts((prev) =>
-					[...prev].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+					[...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
 				);
 				break;
 			default:
@@ -59,17 +61,14 @@ export const Products = ({ category, filters, sort }) => {
 		}
 	}, [sort]);
 
-	console.log(filteredProducts);
-
 	const mappedProducts = filteredProducts.map((product) => (
 		<Product item={product} key={product._id} />
 	));
+	const defaultProducts = products
+		.slice(0, 8)
+		.map((product) => <Product item={product} key={product._id} />);
 
-	// const mappedProducts = popularProducts.map((product) => (
-	// 	<Product item={product} key={product._id} />
-	// ));
-
-	return <Container>{mappedProducts}</Container>;
+	return <Container>{category ? mappedProducts : defaultProducts}</Container>;
 };
 
 const Container = styled.div`

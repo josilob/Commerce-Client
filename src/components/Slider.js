@@ -26,7 +26,7 @@ export const Slider = () => {
 			<InfoContainer>
 				<Title>{item.title}</Title>
 				<Description>{item.description}</Description>
-				<Button>BUY IT!</Button>
+				<Button>BUY NOW!</Button>
 			</InfoContainer>
 		</Slide>
 	));
@@ -35,11 +35,11 @@ export const Slider = () => {
 	return (
 		<Container>
 			<Arrow direction='left' onClick={() => handleClick('left')}>
-				<ChevronLeft />
+				<ChevronLeft style={{ transform: 'scale(1.5)' }} />
 			</Arrow>
 			<Wrapper slideIndex={slideIndex}>{slides}</Wrapper>
 			<Arrow direction='right' onClick={() => handleClick('right')}>
-				<ChevronRight />
+				<ChevronRight style={{ transform: 'scale(1.5)' }} />
 			</Arrow>
 		</Container>
 	);
@@ -60,7 +60,7 @@ const Arrow = styled.div`
 	& {
 		width: 4rem;
 		height: 4rem;
-		background-color: #fff7f7;
+		background-color: #e1f4fc;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
