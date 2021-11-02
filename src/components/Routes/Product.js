@@ -1,6 +1,8 @@
 import { Add, Remove } from '@material-ui/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import styled from 'styled-components';
+import { publicRequest } from '../../axios';
 import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
@@ -8,14 +10,34 @@ import { Navbar } from '../Navbar';
 import { Newsletter } from '../Newsletter';
 
 export const Product = () => {
+	const location = useLocation();
+	const id = location.pathname.split('/')[2];
+
 	const [styles, setStyles] = useState({ cursor: 'initial' });
+	const [product, setProduct] = useState({});
+
+	useEffect(() => {
+		const getProduct = async () => {
+			const res = await publicRequest.get(`/products/${id}`);
+			setProduct(res.data);
+
+			try {
+			} catch (err) {
+				console.log(err.message);
+			}
+		};
+		getProduct();
+	}, [id]);
+
+	console.log(product);
+
 	return (
 		<Container>
 			<Announcement />
 			<Navbar />
 			<Wrapper>
 				<ImgContainer>
-					<Image src='https://i.ibb.co/S6qMxwr/jean.jpg' />
+					<Image src={product.image} />
 				</ImgContainer>
 				<InfoContainer>
 					<Title>Denim Jumpsuit</Title>

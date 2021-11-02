@@ -22,7 +22,7 @@ export const ProductList = () => {
 		<Container>
 			<Announcement />
 			<Navbar />
-			<Title>Dresses</Title>
+			<Title>{category}</Title>
 			<FilterContainer>
 				<Filter>
 					<FilterText>Filter Products</FilterText>
@@ -72,6 +72,7 @@ const FilterContainer = styled.div`
 
 const Title = styled.h1`
 	margin: 20px;
+	text-transform: capitalize;
 `;
 
 const Filter = styled.div`
