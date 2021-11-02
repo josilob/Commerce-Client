@@ -11,25 +11,24 @@ import { Newsletter } from '../Newsletter';
 
 export const Product = () => {
 	const location = useLocation();
-	const id = location.pathname.split('/')[2];
+	const productID = location.pathname.split('/')[2];
 
 	const [styles, setStyles] = useState({ cursor: 'initial' });
 	const [product, setProduct] = useState({});
 
 	useEffect(() => {
 		const getProduct = async () => {
-			const res = await publicRequest.get(`/products/${id}`);
+			const res = await publicRequest.get(`products/${productID}`);
 			setProduct(res.data);
-
 			try {
 			} catch (err) {
 				console.log(err.message);
 			}
 		};
 		getProduct();
-	}, [id]);
+	}, [productID]);
 
-	console.log(product);
+	// console.log(`${BASE_URL}products/${productID}`);
 
 	return (
 		<Container>
@@ -40,28 +39,23 @@ export const Product = () => {
 					<Image src={product.image} />
 				</ImgContainer>
 				<InfoContainer>
-					<Title>Denim Jumpsuit</Title>
-					<Description>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-						commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-						velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-						cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-						est laborum.
-					</Description>
-					<Price>$35</Price>
+					<Title>{product.title}</Title>
+					<Description>{product.description}</Description>
+					<Price>{product.price}</Price>
 					<FilterContainer>
 						<Filter>
 							<FilterTitle>Color</FilterTitle>
-							<FilterColor color='black' />
-							<FilterColor color='darkblue' />
-							<FilterColor color='gray' />
+							{product.color?.map((clr) => (
+								<FilterColor color={clr} key={clr} />
+							))}
 						</Filter>
 						<Filter>
 							<FilterTitle>Size</FilterTitle>
 							<FilterSize>
-								<FilterSizeOption>XS</FilterSizeOption>
+								{product.size?.map((size) => (
+									<FilterSizeOption key={size}>{size}</FilterSizeOption>
+								))}
+
 								<FilterSizeOption>S</FilterSizeOption>
 								<FilterSizeOption>M</FilterSizeOption>
 								<FilterSizeOption>L</FilterSizeOption>
