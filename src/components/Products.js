@@ -44,12 +44,17 @@ export const Products = ({ category, filters, sort }) => {
 				break;
 			case 'newest':
 				setFilteredProducts((prev) =>
-					[...prev].sort((a, b) => a.createdAt - b.createdAt)
+					[...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+				);
+				break;
+			case 'oldest':
+				setFilteredProducts((prev) =>
+					[...prev].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
 				);
 				break;
 			default:
 				setFilteredProducts((prev) =>
-					[...prev].sort((a, b) => a.createdAt - b.createdAt)
+					[...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt))
 				);
 		}
 	}, [sort]);
