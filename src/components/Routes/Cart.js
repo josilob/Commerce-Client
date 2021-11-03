@@ -5,9 +5,12 @@ import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
+import { useSelector } from 'react-redux';
 
 export const Cart = () => {
 	const [styles, setStyles] = useState({});
+	const cart = useSelector((state) => state.cart);
+	// console.log(cart);
 	return (
 		<Container>
 			<Announcement />
@@ -26,79 +29,49 @@ export const Cart = () => {
 
 				<Bottom>
 					<Info>
-						<Product>
-							<ProductDetails>
-								<Image src='https://cdn.modesens.com/media/101365384' />
-								<Details>
-									<ProductName>
-										<b>Product:</b> Nike Raincoat
-									</ProductName>
-									<ProductID>
-										<b>ID:</b> 109257091
-									</ProductID>
-									<ProductColor color='#7A89CB'></ProductColor>
-									<ProductSize>
-										<b>Size:</b> L
-									</ProductSize>
-								</Details>
-							</ProductDetails>
-							<PriceDetails>
-								<ProductAmount>
-									<Add
-										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
-										onMouseLeave={() => setStyles({ cursor: 'initial' })}
-										style={styles}
-									/>
-									<Amount>2</Amount>
-									<Remove
-										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
-										onMouseLeave={() => setStyles({ cursor: 'initial' })}
-										style={styles}
-									/>
-								</ProductAmount>
-								<ProductPrice>$ 75</ProductPrice>
-							</PriceDetails>
-						</Product>
+						{cart.products.map((product) => (
+							<Product>
+								<ProductDetails>
+									<Image src={product.image} />
+									<Details>
+										<ProductName>
+											<b>Product:</b> {product.title}
+										</ProductName>
+										<ProductID>
+											<b>ID:</b> {product._id}
+										</ProductID>
+										<ProductColor color={product.color}></ProductColor>
+										<ProductSize>
+											<b>Size:</b> {product.size}
+										</ProductSize>
+									</Details>
+								</ProductDetails>
+								<PriceDetails>
+									<ProductAmount>
+										<Add
+											onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+											onMouseLeave={() => setStyles({ cursor: 'initial' })}
+											style={styles}
+										/>
+										<Amount>{product.quantity}</Amount>
+										<Remove
+											onMouseEnter={() => setStyles({ cursor: 'pointer' })}
+											onMouseLeave={() => setStyles({ cursor: 'initial' })}
+											style={styles}
+										/>
+									</ProductAmount>
+									<ProductPrice>${product.price * product.quantity}</ProductPrice>
+								</PriceDetails>
+							</Product>
+						))}
 						<Hr />
-						<Product>
-							<ProductDetails>
-								<Image src='https://i.pinimg.com/originals/99/ae/b3/99aeb39b495a89f00eada7ace83b244c.jpg' />
-								<Details>
-									<ProductName>
-										<b>Product:</b> UnderArmour Golf Pants
-									</ProductName>
-									<ProductID>
-										<b>ID:</b> 839572930
-									</ProductID>
-									<ProductColor color='#40567F'></ProductColor>
-									<ProductSize>
-										<b>Size:</b> L
-									</ProductSize>
-								</Details>
-							</ProductDetails>
-							<PriceDetails>
-								<ProductAmount>
-									<Add
-										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
-										onMouseLeave={() => setStyles({ cursor: 'initial' })}
-										style={styles}
-									/>
-									<Amount>1</Amount>
-									<Remove
-										onMouseEnter={() => setStyles({ cursor: 'pointer' })}
-										onMouseLeave={() => setStyles({ cursor: 'initial' })}
-										style={styles}
-									/>
-								</ProductAmount>
-								<ProductPrice>$45</ProductPrice>
-							</PriceDetails>
-						</Product>
 					</Info>
+
 					<Summary>
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
 						<SummaryItem>
 							<SummaryItemText>Subtotal</SummaryItemText>
-							<SummaryItemPrice>$ 80.00</SummaryItemPrice>
+							<SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
 						</SummaryItem>
 						<SummaryItem>
 							<SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -110,7 +83,7 @@ export const Cart = () => {
 						</SummaryItem>
 						<SummaryItem type='total'>
 							<SummaryItemText>Total </SummaryItemText>
-							<SummaryItemPrice>$ 80.00</SummaryItemPrice>
+							<SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
 						</SummaryItem>
 						<Button>CHECKOUT NOW</Button>
 					</Summary>

@@ -32,6 +32,7 @@ export const Product = () => {
 			}
 		};
 		getProduct();
+		window.scrollTo(0, 0);
 	}, [productID]);
 
 	const handleQuantity = (type) => {
@@ -47,7 +48,7 @@ export const Product = () => {
 		dispatch(addProduct({ ...product, quantity, color, size }));
 	};
 
-	console.log(color, size);
+	// console.log(color, size);
 
 	return (
 		<Container>
@@ -135,7 +136,7 @@ const InfoContainer = styled.div`
 const Image = styled.img`
 	width: 100%;
 	height: 90vh;
-	object-fit: cover;
+	object-fit: contain;
 
 	${mobile({ height: '45vh' })}
 `;
