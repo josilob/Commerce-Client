@@ -15,6 +15,20 @@ export const Product = () => {
 
 	const [styles, setStyles] = useState({ cursor: 'initial' });
 	const [product, setProduct] = useState({});
+	const [quantity, setQuantity] = useState(1);
+	const [size, setSize] = useState('');
+	const [color, setColor] = useState('');
+
+	const handleQuantity = (type) => {
+		if (type === 'decrease') {
+			quantity > 1 && setQuantity(quantity - 1);
+		}
+		if (type === 'increase') {
+			setQuantity(quantity + 1);
+		}
+	};
+
+	const handleClick = () => {};
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -28,8 +42,6 @@ export const Product = () => {
 		getProduct();
 	}, [productID]);
 
-	// console.log(`${BASE_URL}products/${productID}`);
-
 	return (
 		<Container>
 			<Announcement />
@@ -41,17 +53,17 @@ export const Product = () => {
 				<InfoContainer>
 					<Title>{product.title}</Title>
 					<Description>{product.description}</Description>
-					<Price>{product.price}</Price>
+					<Price>$ {product.price}</Price>
 					<FilterContainer>
 						<Filter>
 							<FilterTitle>Color</FilterTitle>
 							{product.color?.map((clr) => (
-								<FilterColor color={clr} key={clr} />
+								<FilterColor color={clr} key={clr} onClick={() => setColor(clr)} />
 							))}
 						</Filter>
 						<Filter>
 							<FilterTitle>Size</FilterTitle>
-							<FilterSize>
+							<FilterSize onChange={(e) => setSize(e.target)}>
 								{product.size?.map((size) => (
 									<FilterSizeOption key={size}>{size}</FilterSizeOption>
 								))}
@@ -66,18 +78,20 @@ export const Product = () => {
 					<AddContainer>
 						<AmountContainer>
 							<Remove
+								onClick={() => handleQuantity('decrease')}
 								onMouseEnter={() => setStyles({ cursor: 'pointer' })}
 								onMouseLeave={() => setStyles({ cursor: 'initial' })}
 								style={styles}
 							/>
-							<Amount>1</Amount>
+							<Amount>{quantity}</Amount>
 							<Add
+								onClick={() => handleQuantity('increase')}
 								onMouseEnter={() => setStyles({ cursor: 'pointer' })}
 								onMouseLeave={() => setStyles({ cursor: 'initial' })}
 								style={styles}
 							/>
 						</AmountContainer>
-						<Button>ADD TO CART</Button>
+						<Button onClick={handleClick}>ADD TO CART</Button>
 					</AddContainer>
 				</InfoContainer>
 			</Wrapper>
