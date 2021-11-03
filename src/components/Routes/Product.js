@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import { publicRequest } from '../../axios';
+import { addProduct } from '../../Redux/cartRedux';
 import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
 import { Newsletter } from '../Newsletter';
+import { useDispatch } from 'react-redux';
 
 export const Product = () => {
 	const location = useLocation();
@@ -18,17 +20,7 @@ export const Product = () => {
 	const [quantity, setQuantity] = useState(1);
 	const [size, setSize] = useState('');
 	const [color, setColor] = useState('');
-
-	const handleQuantity = (type) => {
-		if (type === 'decrease') {
-			quantity > 1 && setQuantity(quantity - 1);
-		}
-		if (type === 'increase') {
-			setQuantity(quantity + 1);
-		}
-	};
-
-	const handleClick = () => {};
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -41,6 +33,21 @@ export const Product = () => {
 		};
 		getProduct();
 	}, [productID]);
+
+	const handleQuantity = (type) => {
+		if (type === 'decrease') {
+			quantity > 1 && setQuantity(quantity - 1);
+		}
+		if (type === 'increase') {
+			setQuantity(quantity + 1);
+		}
+	};
+
+	const handleClick = () => {
+		dispatch(addProduct({ ...product, quantity, color, size }));
+	};
+
+	console.log(color, size);
 
 	return (
 		<Container>
@@ -55,15 +62,19 @@ export const Product = () => {
 					<Description>{product.description}</Description>
 					<Price>$ {product.price}</Price>
 					<FilterContainer>
+						{/*
+						 COLOR */}
 						<Filter>
 							<FilterTitle>Color</FilterTitle>
 							{product.color?.map((clr) => (
 								<FilterColor color={clr} key={clr} onClick={() => setColor(clr)} />
 							))}
 						</Filter>
+
+						{/* SIZE */}
 						<Filter>
 							<FilterTitle>Size</FilterTitle>
-							<FilterSize onChange={(e) => setSize(e.target)}>
+							<FilterSize onChange={(e) => setSize(e.target.value)}>
 								{product.size?.map((size) => (
 									<FilterSizeOption key={size}>{size}</FilterSizeOption>
 								))}
