@@ -1,5 +1,5 @@
 import { Add, Remove } from '@material-ui/icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { mobile } from '../../Responsive';
 import { Announcement } from '../Announcement';
@@ -7,8 +7,11 @@ import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
 import { useSelector } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
+import { userRequest } from '../../axios';
+import { useHistory } from 'react-router';
 
 export const Cart = () => {
+	const history = useHistory();
 	const [styles, setStyles] = useState({});
 	const cart = useSelector((state) => state.cart);
 	const [stripeToken, setStripeToken] = useState(null);
@@ -17,7 +20,22 @@ export const Cart = () => {
 	const onToken = (token) => {
 		setStripeToken(token);
 	};
-	console.log(KEY);
+
+	useEffect(() => {
+		const makeRequest = async () => {
+			try {
+				const rest = await userRequest('/checkout/payment', {
+					tokenId: stripeToken,
+					amount: cart.total * 100
+				});
+				history.push('./success');
+			} catch (err) {
+				console.log(err.message);
+			}
+			makeRequest();
+		};
+	}, [stripeToken, history, cart.total]);
+
 	return (
 		<Container>
 			<Announcement />
