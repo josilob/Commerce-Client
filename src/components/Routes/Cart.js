@@ -24,16 +24,16 @@ export const Cart = () => {
 	useEffect(() => {
 		const makeRequest = async () => {
 			try {
-				const rest = await userRequest('/checkout/payment', {
-					tokenId: stripeToken,
+				const res = await userRequest.post('/payment/payment', {
+					tokenId: stripeToken.id,
 					amount: cart.total * 100
 				});
-				history.push('./success');
+				history.push('./success', { data: res.data });
 			} catch (err) {
 				console.log(err.message);
 			}
-			makeRequest();
 		};
+		stripeToken && makeRequest();
 	}, [stripeToken, history, cart.total]);
 
 	return (
