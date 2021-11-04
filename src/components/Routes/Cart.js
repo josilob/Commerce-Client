@@ -6,11 +6,18 @@ import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
 import { useSelector } from 'react-redux';
+import StripeCheckout from 'react-stripe-checkout';
 
 export const Cart = () => {
 	const [styles, setStyles] = useState({});
 	const cart = useSelector((state) => state.cart);
-	// console.log(cart);
+	const [stripeToken, setStripeToken] = useState(null);
+	const KEY = process.env.REACT_APP_STRIPE; // console.log(cart);
+
+	const onToken = (token) => {
+		setStripeToken(token);
+	};
+	console.log(KEY);
 	return (
 		<Container>
 			<Announcement />
@@ -85,7 +92,17 @@ export const Cart = () => {
 							<SummaryItemText>Total </SummaryItemText>
 							<SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
 						</SummaryItem>
-						<Button>CHECKOUT NOW</Button>
+						<StripeCheckout
+							name='Marketplace'
+							image='https://cdn.picpng.com/shopping_cart/shopping-cart-internet-71667.png'
+							billingAddress
+							shippingAddress
+							description={`Your total is ${cart.total}`}
+							amount={cart.total * 100}
+							token={onToken}
+							stripeKey={KEY}>
+							<Button>CHECKOUT NOW</Button>
+						</StripeCheckout>
 					</Summary>
 				</Bottom>
 			</Wrapper>
