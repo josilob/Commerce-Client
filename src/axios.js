@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const BASE_URL = 'http://localhost:27017/';
-const BASE_URL = 'https://marketplace-srv-ae9uc5nye-josilob.vercel.app/';
+// export const BASE_URL = 'http://localhost:27017/';
+export const BASE_URL = 'https://marketplace-api-bice.vercel.app/';
 
 const ADMIN_TOKEN =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2IxNTEzNTMxZGYwZDRkNWVhMTQ5MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTg4NDQyMSwiZXhwIjoxNjM1OTcwODIxfQ.krQxIMQ1puXtH01fY0RWG_mIJ7QmbTzWhDgGqzjcp6E';

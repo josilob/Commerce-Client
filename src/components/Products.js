@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 // import { popularProducts } from '../data';
 import { Product } from './Product';
+import { BASE_URL } from '../axios';
 
 export const Products = ({ category, filters, sort }) => {
 	const [products, setProducts] = useState([]);
@@ -11,8 +12,8 @@ export const Products = ({ category, filters, sort }) => {
 	useEffect(() => {
 		const getProducts = async () => {
 			const link = category
-				? `https://marketplace-srv-ae9uc5nye-josilob.vercel.app/products?category=${category}`
-				: 'https://marketplace-srv-ae9uc5nye-josilob.vercel.app/products';
+				? `${BASE_URL}products?category=${category}`
+				: BASE_URL + 'products';
 			try {
 				const response = await axios.get(link);
 				setProducts(response.data);
