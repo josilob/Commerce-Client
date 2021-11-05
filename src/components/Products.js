@@ -11,8 +11,8 @@ export const Products = ({ category, filters, sort }) => {
 	useEffect(() => {
 		const getProducts = async () => {
 			const link = category
-				? `http://localhost:27017/products?category=${category}`
-				: 'http://localhost:27017/products';
+				? `https://marketplace-srv-ae9uc5nye-josilob.vercel.app/products?category=${category}`
+				: 'https://marketplace-srv-ae9uc5nye-josilob.vercel.app/products';
 			try {
 				const response = await axios.get(link);
 				setProducts(response.data);

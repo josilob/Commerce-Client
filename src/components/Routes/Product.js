@@ -1,15 +1,15 @@
-import { Add, Remove } from '@material-ui/icons';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
 import styled from 'styled-components';
-import { publicRequest } from '../../axios';
-import { addProduct } from '../../Redux/cartRedux';
-import { mobile } from '../../Responsive';
+import { Add, Remove } from '@material-ui/icons';
 import { Announcement } from '../Announcement';
 import { Footer } from '../Footer';
 import { Navbar } from '../Navbar';
 import { Newsletter } from '../Newsletter';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { publicRequest } from '../../axios';
+import { addProduct } from '../../Redux/cartSlice';
+import { mobile } from '../../Responsive';
 
 export const Product = () => {
 	const location = useLocation();
@@ -24,9 +24,9 @@ export const Product = () => {
 
 	useEffect(() => {
 		const getProduct = async () => {
-			const res = await publicRequest.get(`products/${productID}`);
-			setProduct(res.data);
 			try {
+				const res = await publicRequest.get(`products/${productID}`);
+				setProduct(res.data);
 			} catch (err) {
 				console.log(err.message);
 			}
@@ -47,8 +47,6 @@ export const Product = () => {
 	const handleClick = () => {
 		dispatch(addProduct({ ...product, quantity, color, size }));
 	};
-
-	// console.log(color, size);
 
 	return (
 		<Container>
