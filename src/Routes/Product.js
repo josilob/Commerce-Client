@@ -21,7 +21,6 @@ export const Product = () => {
 	const [size, setSize] = useState('');
 	const [color, setColor] = useState('');
 	const dispatch = useDispatch();
-	console.log(product);
 
 	useEffect(() => {
 		const getProduct = async () => {

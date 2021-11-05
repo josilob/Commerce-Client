@@ -13,7 +13,7 @@ import { Cart } from './Routes/Cart';
 import { Success } from './Routes/Success';
 
 export const App = () => {
-	const user = true;
+	const user = false;
 	return (
 		<Router>
 			<Switch>
