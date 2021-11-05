@@ -4,13 +4,13 @@ import {
 	Route,
 	Redirect
 } from 'react-router-dom';
-import { Home } from './components/Routes/Home';
-import { Product } from './components/Routes/Product';
-import { ProductList } from './components/Routes/ProductList';
-import { Register } from './components/Routes/Register';
-import { Login } from './components/Routes/Login';
-import { Cart } from './components/Routes/Cart';
-import { Success } from './components/Routes/Success';
+import { Home } from './Routes/Home';
+import { Product } from './Routes/Product';
+import { ProductList } from './Routes/ProductList';
+import { Register } from './Routes/Register';
+import { Login } from './Routes/Login';
+import { Cart } from './Routes/Cart';
+import { Success } from './Routes/Success';
 
 export const App = () => {
 	const user = true;

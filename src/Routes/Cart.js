@@ -1,13 +1,13 @@
 import { Add, Remove } from '@material-ui/icons';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { mobile } from '../../Responsive';
-import { Announcement } from '../Announcement';
-import { Footer } from '../Footer';
-import { Navbar } from '../Navbar';
-import { useSelector } from 'react-redux';
+import { mobile } from '../Responsive';
+import { Announcement } from '../components/Announcement';
+import { Footer } from '../components/Footer';
+import { Navbar } from '../components/Navbar';
 import StripeCheckout from 'react-stripe-checkout';
-import { userRequest } from '../../axios';
+import { useSelector } from 'react-redux';
+import { userRequest } from '../axios';
 import { useHistory } from 'react-router';
 
 export const Cart = () => {
@@ -15,7 +15,8 @@ export const Cart = () => {
 	const [styles, setStyles] = useState({});
 	const cart = useSelector((state) => state.cart);
 	const [stripeToken, setStripeToken] = useState(null);
-	const KEY = process.env.REACT_APP_STRIPE; // console.log(cart);
+	const KEY = process.env.REACT_APP_STRIPE;
+	// console.log(cart);
 
 	const onToken = (token) => {
 		setStripeToken(token);

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import { Add, Remove } from '@material-ui/icons';
-import { Announcement } from '../Announcement';
-import { Footer } from '../Footer';
-import { Navbar } from '../Navbar';
-import { Newsletter } from '../Newsletter';
+import { Announcement } from '../components/Announcement';
+import { Footer } from '../components/Footer';
+import { Navbar } from '../components/Navbar';
+import { Newsletter } from '../components/Newsletter';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { publicRequest } from '../../axios';
-import { addProduct } from '../../Redux/cartSlice';
-import { mobile } from '../../Responsive';
+import { publicRequest } from '../axios';
+import { addProduct } from '../Redux/cartSlice';
+import { mobile } from '../Responsive';
 
 export const Product = () => {
 	const location = useLocation();
@@ -21,6 +21,7 @@ export const Product = () => {
 	const [size, setSize] = useState('');
 	const [color, setColor] = useState('');
 	const dispatch = useDispatch();
+	console.log(product);
 
 	useEffect(() => {
 		const getProduct = async () => {
