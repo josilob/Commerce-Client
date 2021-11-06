@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
 	const quantity = useSelector((state) => state.cart.quantity);
-	// console.log(quantity);
+
 	return (
 		<Container>
 			<Wrapper>
@@ -23,8 +23,10 @@ export const Navbar = () => {
 				</Middle>
 				<Last>
 					<MenuItem>REGISTER</MenuItem>
-					<MenuItem>SIGN IN</MenuItem>
-					<Link to='/cart'>
+					<Link to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
+						<MenuItem>SIGN IN</MenuItem>
+					</Link>
+					<Link to='/cart' style={{ textDecoration: 'none', color: 'inherit' }}>
 						<MenuItem>
 							<Badge badgeContent={quantity} color='primary'>
 								<ShoppingCartOutlined />

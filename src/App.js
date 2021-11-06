@@ -11,9 +11,10 @@ import { Register } from './Routes/Register';
 import { Login } from './Routes/Login';
 import { Cart } from './Routes/Cart';
 import { Success } from './Routes/Success';
+import { useSelector } from 'react-redux';
 
 export const App = () => {
-	const user = false;
+	const user = useSelector((state) => state.user.currentUser);
 	return (
 		<Router>
 			<Switch>

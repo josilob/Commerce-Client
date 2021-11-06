@@ -7,7 +7,6 @@ import {
 import { Link } from 'react-router-dom';
 
 export const Product = ({ item }) => {
-	// console.log(item);
 	return (
 		<Container>
 			<Circle />

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { login } from '../Redux/apiCalls';
 import { mobile } from '../Responsive';
@@ -8,6 +8,7 @@ export const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const dispatch = useDispatch();
+	const { isFetching, error } = useSelector((state) => state.user);
 	const handleLogin = (e) => {
 		e.preventDefault();
 		login(dispatch, { username, password });
@@ -19,15 +20,20 @@ export const Login = () => {
 				<Title>SIGN IN</Title>
 				<Form>
 					<Input
+						autoComplete='off'
 						placeholder='username'
 						onChange={(e) => setUsername(e.target.value)}
 					/>
 					<Input
+						autoComplete='off'
 						type='password'
 						placeholder='password'
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-					<Button onClick={handleLogin}>LOGIN</Button>
+					<Button onClick={handleLogin} disabled={isFetching}>
+						LOGIN
+					</Button>
+					{error && <Error>Something went wrong...</Error>}
 					<Link>FORGOT THE PASSOWRD?</Link>
 					<Link>CREATE A NEW ACCOUNT</Link>
 				</Form>
@@ -82,11 +88,16 @@ const Button = styled.button`
 	border: none;
 	padding: 15px 20px;
 	background-color: teal;
-	flood-color: #fff;
 	margin-bottom: 10px;
+	color: #fff;
 
 	&:hover {
 		cursor: pointer;
+	}
+
+	&:disabled {
+		color: teal;
+		cursor: not-allowed;
 	}
 `;
 
@@ -95,4 +106,8 @@ const Link = styled.a`
 	font-size: 12px;
 	text-decoration: underline;
 	cursor: pointer;
+`;
+
+const Error = styled.span`
+	color: red;
 `;
