@@ -25,21 +25,21 @@ export const sliderItems = [
 export const categories = [
 	{
 		id: 1,
-		img: 'https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-		title: 'SHIRT STYLE!',
-		category: 'shirts'
+		img: 'https://i.pinimg.com/736x/31/b1/c2/31b1c2775652516389dce74a012c9dd8--mens-boots-fashion-mens-fall-fashion.jpg',
+		title: "MEN'S COLLECTION!",
+		category: 'men'
 	},
 	{
 		id: 2,
 		img: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-		title: 'LOUNGEWEAR LOVE',
+		title: 'LOUNGEWEAR',
 		category: 'women'
 	},
 	{
 		id: 3,
 		img: 'https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-		title: 'LIGHT JACKETS',
-		category: 'jackets'
+		title: 'LADIES WARDROBE',
+		category: 'women'
 	}
 ];
 

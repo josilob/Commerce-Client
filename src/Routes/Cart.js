@@ -16,7 +16,6 @@ export const Cart = () => {
 	const cart = useSelector((state) => state.cart);
 	const [stripeToken, setStripeToken] = useState(null);
 	const KEY = process.env.REACT_APP_STRIPE;
-	// console.log(cart);
 
 	const onToken = (token) => {
 		setStripeToken(token);
@@ -29,7 +28,7 @@ export const Cart = () => {
 					tokenId: stripeToken.id,
 					amount: cart.total * 100
 				});
-				history.push('./success', { data: res.data });
+				history.push('/success', { data: res.data });
 			} catch (err) {
 				console.log(err.message);
 			}

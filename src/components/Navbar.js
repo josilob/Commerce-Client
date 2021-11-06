@@ -2,11 +2,20 @@ import styled from 'styled-components';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import { Badge } from '@material-ui/core';
 import { mobile } from '../Responsive';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '../Redux/userSlice';
+import { emptyCart } from '../Redux/cartSlice';
 
 export const Navbar = () => {
 	const quantity = useSelector((state) => state.cart.quantity);
+	const user = useSelector((state) => state.user.currentUser);
+	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		dispatch(logout());
+		window.location.reload();
+	};
 
 	return (
 		<Container>
@@ -23,9 +32,13 @@ export const Navbar = () => {
 				</Middle>
 				<Last>
 					<MenuItem>REGISTER</MenuItem>
-					<Link to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
-						<MenuItem>SIGN IN</MenuItem>
-					</Link>
+					{user ? (
+						<MenuItem onClick={handleLogout}>SIGN OUT</MenuItem>
+					) : (
+						<Link to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
+							<MenuItem>SIGN IN</MenuItem>
+						</Link>
+					)}
 					<Link to='/cart' style={{ textDecoration: 'none', color: 'inherit' }}>
 						<MenuItem>
 							<Badge badgeContent={quantity} color='primary'>
