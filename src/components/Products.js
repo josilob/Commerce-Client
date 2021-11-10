@@ -22,6 +22,7 @@ export const Products = ({ category, filters, sort }) => {
 			}
 		};
 		getProducts();
+		window.scrollTo(0, 0);
 	}, [category]);
 
 	useEffect(() => {
