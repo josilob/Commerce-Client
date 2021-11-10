@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 import { mobile } from '../Responsive';
+import registerBg from '../images/register-bg.webp';
+
+// `linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75))`;
 
 export const Register = () => {
 	return (
-		<Container>
+		<Container
+			style={{
+				background: `linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)),
+		url(${registerBg}) center/cover no-repeat`
+			}}>
 			<Wrapper>
 				<Title>CREATE AN ACCOUNT</Title>
 				<Form>
@@ -27,9 +34,8 @@ export const Register = () => {
 const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
-	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)),
-		url('https://images.unsplash.com/photo-1484502249930-e1da807099a5')
-			center/cover no-repeat;
+	/* background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)), */
+	/* url() center/cover no-repeat; */
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -28,10 +28,14 @@ export const Navbar = () => {
 					</SearchContainer>
 				</First>
 				<Middle>
-					<Logo>Marketplace.</Logo>
+					<Link to='/' style={{ textDecoration: 'none', color: 'initial' }}>
+						<Logo>Marketplace.</Logo>
+					</Link>
 				</Middle>
 				<Last>
-					<MenuItem>REGISTER</MenuItem>
+					<Link to='/register' style={{ textDecoration: 'none', color: 'inherit' }}>
+						<MenuItem>REGISTER</MenuItem>
+					</Link>
 					{user ? (
 						<MenuItem onClick={handleLogout}>SIGN OUT</MenuItem>
 					) : (
@@ -87,6 +91,7 @@ const Last = styled.div`
 
 const Logo = styled.h1`
 	font-weight: bold;
+
 	${mobile({ fontSize: '1.1rem' })}
 `;
 
@@ -117,6 +122,12 @@ const MenuItem = styled.div`
 	font-size: 0.9rem;
 	cursor: pointer;
 	margin-left: 1.75rem;
+
+	transition: color, transform 0.25s ease-in-out;
+	&:hover {
+		color: #0e6caf;
+		transform: scale(1.1);
+	}
 
 	${mobile({ fontSize: '.7rem', marginLeft: '6px' })}
 `;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { login } from '../Redux/apiCalls';
 import { mobile } from '../Responsive';
+import loginBg from '../images/login-bg.webp';
 
 export const Login = () => {
 	const [username, setUsername] = useState('');
@@ -15,7 +16,11 @@ export const Login = () => {
 	};
 
 	return (
-		<Container>
+		<Container
+			style={{
+				background: `linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)),
+		url(${loginBg}) center/cover no-repeat`
+			}}>
 			<Wrapper>
 				<Title>SIGN IN</Title>
 				<Form>
@@ -49,8 +54,8 @@ const Container = styled.div`
 			rgba(255, 255, 255, 0.5),
 			rgba(255, 255, 255, 0.15)
 		),
-		url('https://images.unsplash.com/photo-1490114538077-0a7f8cb49891')
-			center/cover no-repeat;
+		url('../images/161906b8-d7bd-4e54-a7b5-a8b364e028f3.webp') center/cover
+			no-repeat;
 	display: flex;
 	align-items: center;
 	justify-content: center;
