@@ -1,7 +1,7 @@
 export const sliderItems = [
 	{
 		id: 1,
-		img: 'https://i.pinimg.com/originals/49/eb/ec/49ebec42164a4aedd4971469c8fa1d18.png',
+		img: 'https://i.imgur.com/1rzAyzb.png',
 		title: 'SITEWIDE SALE',
 		description: 'DISCOUNTS UP TO 50% ON SELECTED ITEMS',
 		bg: 'f5fafd'
